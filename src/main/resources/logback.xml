@@ -1,0 +1,78 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TMS3_LOG_DIR}\tms3.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms3.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="TC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TMS3_LOG_DIR}\tms3.tc.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms3.tc.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ADITI" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TMS3_LOG_DIR}\tms3.aditi.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms3.aditi.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="NICER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TMS3_LOG_DIR}\tms3.nicerglobe.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms3.nicerglobe.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FRETRON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TMS3_LOG_DIR}\tms3.fretron.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms3.fretron.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="tms3.tc" level="DEBUG" additivity="true">
+        <appender-ref ref="TC"/>
+    </logger>
+    <logger name="tms3.aditi" level="DEBUG" additivity="true">
+        <appender-ref ref="ADITI"/>
+    </logger>
+    <logger name="tms3.nicerglobe" level="DEBUG" additivity="true">
+        <appender-ref ref="NICER"/>
+    </logger>
+    <logger name="tms3.fretron" level="DEBUG" additivity="true">
+        <appender-ref ref="FRETRON"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
