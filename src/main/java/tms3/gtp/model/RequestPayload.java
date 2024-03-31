@@ -3,6 +3,7 @@ package tms3.gtp.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Builder;
+import org.apache.commons.lang3.StringUtils;
 import tms3.Utilities;
 import tms3.gtp.UpperCasePropertyNamingStrategy;
 import tms3.tc.model.Position;
@@ -32,6 +33,7 @@ public record RequestPayload(
         final String heading = String.valueOf(position.course());
         final String datetime = Utilities.convertToGmtDateTimeString(position.deviceTime());
         final String ignStatus = position.attributes().ignition() ? "1" : "0";
+        final String vehicleNumber = vehicleRegistration.replaceAll("\\s","");
 
         var dataElement = DataElement.builder()
                 .latitude(latitude)
@@ -49,7 +51,7 @@ public record RequestPayload(
         return RequestPayload.builder()
                 .dataElements(array)
                 .gpsProviderKey(gpsProviderKey)
-                .vehicleNo(vehicleRegistration)
+                .vehicleNo(vehicleNumber)
                 .gpsType(gpsType)
                 .build();
     }
