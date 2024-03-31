@@ -1,4 +1,4 @@
-package tms3.nicerglobe;
+package tms3.gtp;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;

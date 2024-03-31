@@ -48,6 +48,17 @@
             <pattern>%d %-5level %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
+    <appender name="GTP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TMS3_LOG_DIR}\tms3.gtp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms3.gtp.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
     <appender name="FRETRON" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${TMS3_LOG_DIR}\tms3.fretron.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -67,6 +78,9 @@
     </logger>
     <logger name="tms3.nicerglobe" level="DEBUG" additivity="true">
         <appender-ref ref="NICER"/>
+    </logger>
+    <logger name="tms3.gtp" level="DEBUG" additivity="true">
+        <appender-ref ref="GTP"/>
     </logger>
     <logger name="tms3.fretron" level="DEBUG" additivity="true">
         <appender-ref ref="FRETRON"/>

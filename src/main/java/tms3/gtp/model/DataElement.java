@@ -1,9 +1,9 @@
-package tms3.nicerglobe.model;
+package tms3.gtp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Builder;
-import tms3.nicerglobe.UpperCasePropertyNamingStrategy;
+import tms3.gtp.UpperCasePropertyNamingStrategy;
 
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,7 +14,6 @@ public record DataElement(
         String speed,
         String heading,
         String datetime,
-        String ignStatus,
-        String location
+        String ignStatus
 ) {
 }
